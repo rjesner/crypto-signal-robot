@@ -1,6 +1,8 @@
 from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 from app.main.routes import main as main_blueprint  # noqa: E402
 from app.api.routes import api as api_blueprint  # noqa: E402
