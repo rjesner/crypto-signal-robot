@@ -1,14 +1,8 @@
 from flask import request, jsonify
-from time import time
 import sys
 
-
-def index_api():
-    return jsonify({'hello': 'World'})
-
-
-def time_api():
-    return jsonify({"time": time()})
+from app.api.models.LoginModel import LoginModel
+from app.api.controllers.LoginController import LoginController
 
 
 def login_api():
@@ -20,5 +14,10 @@ def login_api():
 
         print(f"Received login data: Email: {email}, Password: {password}, Remember Me: {remember_me}", file=sys.stderr)
 
-        return jsonify({'message': 'Login successful'}), 200
+        login_model = LoginModel(email=email, password=password)
+
+        response, status_code = LoginController.login(login_model)
+
+        return jsonify(response), status_code
+
     return jsonify({'message': 'Invalid request method'}), 405

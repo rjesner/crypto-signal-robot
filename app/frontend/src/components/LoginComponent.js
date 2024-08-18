@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { handleLoginClick } from "./loginHandlers"; // Import the function
+import { handleLoginClick } from "./LoginHandler"; // Import the function
 
 export default class Login extends Component {
 	constructor(props) {
