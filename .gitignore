@@ -4,3 +4,5 @@ app/static/
 app/__pycache__/
 app/api/__pycache__/
 app/main/__pycache__/
+app/api/models/__pycache__/
+app/api/controllers/__pycache__/
