@@ -1,4 +1,6 @@
+from app.api.dbSetup import SessionLocal
 from app.api.models.SignUpModel import SignUpModel
+from app.api.models.UserModel import User
 
 
 class SignUpController:
@@ -16,8 +18,15 @@ class SignUpController:
 		if not SignUpModel.is_valid_password(sign_up_model.password):
 			return {'message': 'Password must be at least 6 characters long'}, 400
 
-		# Here, the logic to save the user to a database.
-		# For now, a success message.
+		session = SessionLocal()
+		new_user = User(
+			firstname='John',
+			lastname='Doe',
+			email='john.doe@example.com',
+			password='securepassword'
+		)
+		session.add(new_user)
+		session.commit()
+		session.close()
 
-		# Mock response for successful sign-up
 		return {'message': 'User registered successfully'}, 201
