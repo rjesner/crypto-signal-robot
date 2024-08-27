@@ -1,4 +1,6 @@
-export async function handleSignUpClick({ firstName, lastName, email, password }) {
+import { toast } from 'react-toastify';
+
+export async function handleSignUpClick({ firstName, lastName, email, password }, navigate) {
     try {
         const response = await fetch('http://localhost:80/api/signup', {
             method: 'POST',
@@ -16,11 +18,12 @@ export async function handleSignUpClick({ firstName, lastName, email, password }
         const data = await response.json();
 
         if (response.ok) {
-            console.log('Response from server:', data);
+            toast.success('Registro com sucesso');
+            navigate('/login');
         } else {
-            console.error('Server error:', data.message || response.statusText);
+            toast.error(`Server error: ${data.message || response.statusText}`);
         }
     } catch (error) {
-        console.error('Network error:', error);
+        toast.error(`Network error: ${error.message}`);
     }
 }
