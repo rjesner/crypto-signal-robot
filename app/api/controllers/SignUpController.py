@@ -2,6 +2,8 @@ from app.api.dbSetup import SessionLocal
 from app.api.models.SignUpModel import SignUpModel
 from app.api.models.UserModel import User
 
+import hashlib
+
 
 class SignUpController:
 	@staticmethod
@@ -19,11 +21,16 @@ class SignUpController:
 			return {'message': 'Password must be at least 6 characters long'}, 400
 
 		session = SessionLocal()
+
+		sha256_hash = hashlib.sha256()
+		sha256_hash.update(sign_up_model.password.encode('utf-8'))
+		hashed_password = sha256_hash.hexdigest()
+
 		new_user = User(
-			firstname='John',
-			lastname='Doe',
-			email='john.doe@example.com',
-			password='securepassword'
+			firstname=sign_up_model.first_name,
+			lastname=sign_up_model.last_name,
+			email=sign_up_model.email,
+			password=hashed_password
 		)
 		session.add(new_user)
 		session.commit()
