@@ -1,4 +1,6 @@
-export async function handleLoginClick({ email, password, rememberMe }) {
+import {toast} from "react-toastify";
+
+export async function handleLoginClick({ email, password, rememberMe }, navigate) {
     try {
         const response = await fetch('http://localhost:80/api/login', {
             method: 'POST',
@@ -15,11 +17,12 @@ export async function handleLoginClick({ email, password, rememberMe }) {
         const data = await response.json();
 
         if (response.ok) {
-            console.log('Response from server:', data);
+            toast.success('Login com sucesso');
+            navigate('/access');
         } else {
-            console.error('Server error:', data.message || response.statusText);
+            toast.error(`Server error: ${data.message || response.statusText}`);
         }
     } catch (error) {
-        console.error('Network error:', error);
+        toast.error(`Network error: ${error.message}`);
     }
 }

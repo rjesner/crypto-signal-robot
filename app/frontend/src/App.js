@@ -4,8 +4,10 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/LoginComponent';
 import SignUp from './components/SignUpComponent';
+import Access from './components/AccessComponent';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BoxWrapper from './components/BoxWrapper';
 
 function App() {
     return (
@@ -33,15 +35,15 @@ function App() {
                     </div>
                 </nav>
                 <div className="auth-wrapper">
-                    <div className="auth-inner">
+                    <BoxWrapper>
                         <Routes>
                             <Route exact path="/" element={<Login />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/sign-up" element={<SignUp />} />
+                            <Route path="/access" element={<Access />} />
                         </Routes>
-                    </div>
+                    </BoxWrapper>
                 </div>
-                {}
                 <ToastContainer
                     position="top-right"
                     autoClose={5000}
