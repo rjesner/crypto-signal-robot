@@ -5,6 +5,7 @@ from app.api.models.LoginModel import LoginModel
 from app.api.controllers.LoginController import LoginController
 from app.api.models.SignUpModel import SignUpModel
 from app.api.controllers.SignUpController import SignUpController
+from app.api.controllers.AccessController import AccessController
 
 
 def login_api():
@@ -48,6 +49,20 @@ def signup_api():
 
         except Exception as e:
             print(f"Error processing sign-up request: {str(e)}", file=sys.stderr)
+            return jsonify({'message': 'Internal server error'}), 500
+
+    return jsonify({'message': 'Invalid request method'}), 405
+
+
+def access_api():
+    if request.method == 'GET':
+        try:
+            response, status_code = AccessController.access()
+
+            return jsonify(response), status_code
+
+        except Exception as e:
+            print(f"Error processing login request: {str(e)}", file=sys.stderr)
             return jsonify({'message': 'Internal server error'}), 500
 
     return jsonify({'message': 'Invalid request method'}), 405
