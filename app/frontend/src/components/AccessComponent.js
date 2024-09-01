@@ -10,7 +10,7 @@ const AccessComponent = () => {
         { id: 3, name: 'Solana', market_cap: '---', price: '---' },
     ]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate(); // Initialize navigate function
+    const navigate = useNavigate();
 
     const updateWithCounter = async () => {
         try {
@@ -84,13 +84,13 @@ const AccessComponent = () => {
                         </div>
                     ) : (
                         <div className="table-responsive">
-                            <table className="table table-striped table-bordered">
-                                <thead className="thead-dark">
+                            <table className="table table-hover table-bordered custom-table">
+                                <thead className="thead-light">
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Market Cap</th>
-                                        <th>Value</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>

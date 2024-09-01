@@ -122,3 +122,29 @@ html,
 .btn-primary {
     padding: 0;
 }
+
+.custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.custom-table thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    text-align: center;
+}
+
+.custom-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.custom-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.75rem;
+}
