@@ -6,7 +6,7 @@ import Login from './components/LoginComponent';
 import SignUp from './components/SignUpComponent';
 import Access from './components/AccessComponent';
 import Pricing from './components/PricingComponent';
-import Page2 from './components/Page2';
+import Profile from './components/ProfileComponent';
 import Page3 from './components/Page3';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,8 +44,8 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/sign-up" element={<SignUp />} />
                             <Route path="/access" element={<Access />} />
-                            <Route path="/page1" element={<Pricing />} />
-                            <Route path="/page2" element={<Page2 />} />
+                            <Route path="/pricing" element={<Pricing />} />
+                            <Route path="/profile" element={<Profile />} />
                             <Route path="/page3" element={<Page3 />} />
                         </Routes>
                     </BoxWrapper>

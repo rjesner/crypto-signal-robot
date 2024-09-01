@@ -108,8 +108,8 @@ const AccessComponent = () => {
                     )}
                 </div>
                 <div className="col-md-3 d-flex flex-column align-items-end">
-                    <button className="btn btn-primary mb-2" onClick={() => navigate('/page1')}>Assinatura</button>
-                    <button className="btn btn-primary mb-2" onClick={() => navigate('/page2')}>Perfil</button>
+                    <button className="btn btn-primary mb-2" onClick={() => navigate('/pricing')}>Assinatura</button>
+                    <button className="btn btn-primary mb-2" onClick={() => navigate('/profile')}>Perfil</button>
                     <button className="btn btn-primary" onClick={() => navigate('/page3')}>Chatbot</button>
                 </div>
             </div>
