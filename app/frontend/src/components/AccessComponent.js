@@ -12,7 +12,7 @@ const AccessComponent = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    const updateWithCounter = async () => {
+    const updateTableData = async () => {
         try {
             const response = await fetch('http://localhost:80/api/access', {
                 method: 'GET',
@@ -64,7 +64,7 @@ const AccessComponent = () => {
     };
 
     useEffect(() => {
-        updateWithCounter();
+        updateTableData();
     }, []);
 
     return (
