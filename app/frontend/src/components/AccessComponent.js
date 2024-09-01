@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AccessComponent = () => {
     const [data, setData] = useState([
-        { id: 1, name: 'Bitcoin', marketcap: '---', price: '---' },
-        { id: 2, name: 'Ethereum', marketcap: '---', price: '---' },
-        { id: 3, name: 'Solana', marketcap: '---', price: '---' },
+        { id: 1, name: 'Bitcoin', market_cap: '---', price: '---' },
+        { id: 2, name: 'Ethereum', market_cap: '---', price: '---' },
+        { id: 3, name: 'Solana', market_cap: '---', price: '---' },
     ]);
 
     const [counter, setCounter] = useState(0);
 
-    const updateMarketCapWithCounter = async (id) => {
+    const updateWithCounter = async () => {
         try {
             const response = await fetch('http://localhost:80/api/access', {
                 method: 'GET',
@@ -20,11 +20,40 @@ const AccessComponent = () => {
             });
 
             const data = await response.json();
-            setData(prevData =>
-                prevData.map(user =>
-                    user.id === id ? {...user, marketcap: data.message} : user
-                )
-            );
+            const values = data.message.split('|');
+
+            setData(prevData => {
+                return prevData.map(user => {
+                    let updatedUser = {...user};
+                    switch (user.id) {
+                        case 1:
+                            updatedUser = {
+                                ...updatedUser,
+                                market_cap: values[0],
+                                price: values[1]
+                            };
+                            break;
+                        case 2:
+                            updatedUser = {
+                                ...updatedUser,
+                                market_cap: values[2],
+                                price: values[3]
+                            };
+                            break;
+                        case 3:
+                            updatedUser = {
+                                ...updatedUser,
+                                market_cap: values[4],
+                                price: values[5]
+                            };
+                            break;
+                        default:
+                            break;
+                    }
+                    return updatedUser;
+                });
+            });
+
         } catch (error) {
             console.log(`Network error: ${error.message}`);
         }
@@ -33,20 +62,12 @@ const AccessComponent = () => {
     const handleComponentMount = () => {
         console.log('AccessComponent has been rendered');
 
-        const intervalId = setInterval(() => {
-            updateMarketCapWithCounter(1);
-        }, 4000);
-
-        return () => clearInterval(intervalId);
+        updateWithCounter().then(r => [])
     };
 
     useEffect(() => {
-        const cleanup = handleComponentMount();
-
-        return () => {
-            if (cleanup) cleanup();
-        };
-    }, []);
+        handleComponentMount();
+    });
 
     return (
         <div className="container mt-5">
@@ -66,7 +87,7 @@ const AccessComponent = () => {
                             <tr key={user.id}>
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
-                                <td>{user.marketcap}</td>
+                                <td>{user.market_cap}</td>
                                 <td>{user.price}</td>
                             </tr>
                         ))}
