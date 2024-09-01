@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Audio } from 'react-loader-spinner';
 
 const AccessComponent = () => {
     const [data, setData] = useState([
@@ -7,8 +8,7 @@ const AccessComponent = () => {
         { id: 2, name: 'Ethereum', market_cap: '---', price: '---' },
         { id: 3, name: 'Solana', market_cap: '---', price: '---' },
     ]);
-
-    const [counter, setCounter] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     const updateWithCounter = async () => {
         try {
@@ -54,46 +54,54 @@ const AccessComponent = () => {
                 });
             });
 
+            setLoading(false);
         } catch (error) {
             console.log(`Network error: ${error.message}`);
+            setLoading(false);
         }
     };
 
-    const handleComponentMount = () => {
-        console.log('AccessComponent has been rendered');
-
-        updateWithCounter().then(r => [])
-    };
-
     useEffect(() => {
-        handleComponentMount();
-    });
+        updateWithCounter();
+    }, []);
 
     return (
         <div className="container mt-5">
             <h2 className="mb-4">Crypto Market Data</h2>
-            <div className="table-responsive">
-                <table className="table table-striped table-bordered">
-                    <thead className="thead-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Market Cap</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map(user => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.market_cap}</td>
-                                <td>{user.price}</td>
+            {loading ? (
+                <div className="d-flex justify-content-center">
+                    <Audio
+                        height="80"
+                        width="80"
+                        radius="9"
+                        color="green"
+                        ariaLabel="loading"
+                    />
+                </div>
+            ) : (
+                <div className="table-responsive">
+                    <table className="table table-striped table-bordered">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Market Cap</th>
+                                <th>Value</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {data.map(user => (
+                                <tr key={user.id}>
+                                    <td>{user.id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.market_cap}</td>
+                                    <td>{user.price}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 };
