@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/LoginComponent';
 import SignUp from './components/SignUpComponent';
 import Access from './components/AccessComponent';
+import Page1 from './components/Page1';
+import Page2 from './components/Page2';
+import Page3 from './components/Page3';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BoxWrapper from './components/BoxWrapper';
@@ -37,10 +40,13 @@ function App() {
                 <div className="auth-wrapper">
                     <BoxWrapper>
                         <Routes>
-                            <Route exact path="/" element={<Login />} />
+                            <Route path="/" element={<Login />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/sign-up" element={<SignUp />} />
                             <Route path="/access" element={<Access />} />
+                            <Route path="/page1" element={<Page1 />} />
+                            <Route path="/page2" element={<Page2 />} />
+                            <Route path="/page3" element={<Page3 />} />
                         </Routes>
                     </BoxWrapper>
                 </div>

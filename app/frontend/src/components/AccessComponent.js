@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Audio } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 
 const AccessComponent = () => {
     const [data, setData] = useState([
@@ -9,6 +10,7 @@ const AccessComponent = () => {
         { id: 3, name: 'Solana', market_cap: '---', price: '---' },
     ]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate(); // Initialize navigate function
 
     const updateWithCounter = async () => {
         try {
@@ -67,41 +69,50 @@ const AccessComponent = () => {
 
     return (
         <div className="container mt-5">
-            <h2 className="mb-4">Crypto Market Data</h2>
-            {loading ? (
-                <div className="d-flex justify-content-center">
-                    <Audio
-                        height="80"
-                        width="80"
-                        radius="9"
-                        color="green"
-                        ariaLabel="loading"
-                    />
+            <div className="row">
+                <div className="col-md-9">
+                    <h2 className="mb-4">Crypto Market Data</h2>
+                    {loading ? (
+                        <div className="d-flex justify-content-center">
+                            <Audio
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="green"
+                                ariaLabel="loading"
+                            />
+                        </div>
+                    ) : (
+                        <div className="table-responsive">
+                            <table className="table table-striped table-bordered">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Market Cap</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.map(user => (
+                                        <tr key={user.id}>
+                                            <td>{user.id}</td>
+                                            <td>{user.name}</td>
+                                            <td>{user.market_cap}</td>
+                                            <td>{user.price}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
                 </div>
-            ) : (
-                <div className="table-responsive">
-                    <table className="table table-striped table-bordered">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Market Cap</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map(user => (
-                                <tr key={user.id}>
-                                    <td>{user.id}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.market_cap}</td>
-                                    <td>{user.price}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className="col-md-3 d-flex flex-column align-items-end">
+                    <button className="btn btn-primary mb-2" onClick={() => navigate('/page1')}>Assinatura</button>
+                    <button className="btn btn-primary mb-2" onClick={() => navigate('/page2')}>Perfil</button>
+                    <button className="btn btn-primary" onClick={() => navigate('/page3')}>Chatbot</button>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

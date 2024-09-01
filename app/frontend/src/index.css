@@ -97,3 +97,28 @@ html,
 	font-weight: 500;
 	font-family: "Arial Narrow", sans-serif;
 }
+
+.btn-primary {
+    background-color: #445154 !important;
+    border-color: #445154 !important;
+    font-weight: 500 !important;
+    font-family: "Arial Narrow", sans-serif !important;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+    min-width: 150px;
+}
+
+.btn-primary {
+    padding: 0;
+}
