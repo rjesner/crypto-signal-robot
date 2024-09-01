@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+
 * {
 	box-sizing: border-box;
 }
+
 body {
 	background: #445154 !important;
 	min-height: 100vh;
@@ -9,6 +11,7 @@ body {
 	font-weight: 400;
 	font-family: "Arial Narrow", sans-serif;
 }
+
 h1,
 h2,
 h3,
@@ -20,6 +23,7 @@ span {
 	font-weight: 500;
 	font-family: "Arial Narrow", sans-serif;
 }
+
 body,
 html,
 .App,
@@ -28,16 +32,19 @@ html,
 	width: 100%;
 	height: 100%;
 }
+
 .navbar-light {
 	background-color: #ffffff;
 	box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
+
 .auth-wrapper {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	text-align: left;
 }
+
 .auth-inner {
 	width: 450px;
 	margin: auto;
@@ -47,37 +54,45 @@ html,
 	border-radius: 15px;
 	transition: all 0.3s;
 }
+
 .auth-wrapper .form-control:focus {
 	border-color: #445154;
 	box-shadow: none;
 }
+
 .auth-wrapper h3 {
 	text-align: center;
 	margin: 0;
 	line-height: 1;
 	padding-bottom: 20px;
 }
+
 .custom-control-label {
 	font-weight: 400;
 }
-.navbar a{
-	font-weight: 500 !important;;
-	font-family: "Arial Narrow", sans-serif !important;;
+
+.navbar a {
+	font-weight: 500 !important;
+	font-family: "Arial Narrow", sans-serif !important;
 }
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #445154 !important;
 	border-color: #445154 !important;
 	font-weight: 500 !important;
 	font-family: "Arial Narrow", sans-serif !important;
 }
+
 .custom-control-label {
 	position: relative;
     top: -0.1em;
     left: 0.2em;
 }
+
 .custom-control-input:checked {
     accent-color: #445154 !important;
 }
+
 .forgot-password,
 .forgot-password a {
 	text-align: right;
@@ -88,11 +103,13 @@ html,
 	font-weight: 500;
 	font-family: "Arial Narrow", sans-serif;
 }
+
 .forgot-password a {
 	color: #445154;
 	font-weight: 500;
 	font-family: "Arial Narrow", sans-serif;
 }
+
 ::placeholder {
 	font-weight: 500;
 	font-family: "Arial Narrow", sans-serif;
@@ -121,6 +138,41 @@ html,
 
 .btn-primary {
     padding: 0;
+}
+
+.pricing-box {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.pricing-box:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.pricing-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #445154;
+}
+
+.featured {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+}
+
+.featured .pricing-title {
+    color: #008000;
 }
 
 .custom-table {

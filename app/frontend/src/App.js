@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/LoginComponent';
 import SignUp from './components/SignUpComponent';
 import Access from './components/AccessComponent';
-import Page1 from './components/Page1';
+import Pricing from './components/PricingComponent';
 import Page2 from './components/Page2';
 import Page3 from './components/Page3';
 import { ToastContainer } from 'react-toastify';
@@ -44,7 +44,7 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/sign-up" element={<SignUp />} />
                             <Route path="/access" element={<Access />} />
-                            <Route path="/page1" element={<Page1 />} />
+                            <Route path="/page1" element={<Pricing />} />
                             <Route path="/page2" element={<Page2 />} />
                             <Route path="/page3" element={<Page3 />} />
                         </Routes>
