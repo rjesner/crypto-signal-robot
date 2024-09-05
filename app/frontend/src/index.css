@@ -76,8 +76,11 @@ html,
 	font-family: "Arial Narrow", sans-serif !important;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #445154 !important;
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+	background-color: #445154 !important;
 	border-color: #445154 !important;
 	font-weight: 500 !important;
 	font-family: "Arial Narrow", sans-serif !important;
@@ -85,12 +88,12 @@ html,
 
 .custom-control-label {
 	position: relative;
-    top: -0.1em;
-    left: 0.2em;
+	top: -0.1em;
+	left: 0.2em;
 }
 
 .custom-control-input:checked {
-    accent-color: #445154 !important;
+	accent-color: #445154 !important;
 }
 
 .forgot-password,
@@ -116,112 +119,112 @@ html,
 }
 
 .btn-primary {
-    background-color: #445154 !important;
-    border-color: #445154 !important;
-    font-weight: 500 !important;
-    font-family: "Arial Narrow", sans-serif !important;
-    width: 150px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+	background-color: #445154 !important;
+	border-color: #445154 !important;
+	font-weight: 500 !important;
+	font-family: "Arial Narrow", sans-serif !important;
+	width: 150px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
 .mb-2 {
-    margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .btn-primary {
-    min-width: 150px;
+	min-width: 150px;
 }
 
 .btn-primary {
-    padding: 0;
+	padding: 0;
 }
 
 .pricing-box {
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-align: center;
+	border: 1px solid #dee2e6;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	text-align: center;
 }
 
 .pricing-box:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+	transform: scale(1.05);
 }
 
 .pricing-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    font-weight: 600;
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	font-weight: 600;
 }
 
 .price {
-    font-size: 2rem;
-    margin: 10px 0;
-    color: #445154;
+	font-size: 2rem;
+	margin: 10px 0;
+	color: #445154;
 }
 
 .featured {
-    background-color: #f8f9fa;
-    border-color: #ced4da;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
 }
 
 .featured .pricing-title {
-    color: #008000;
+	color: #008000;
 }
 
 .custom-table {
-    border-collapse: separate;
-    border-spacing: 0;
+	border-collapse: separate;
+	border-spacing: 0;
 }
 
 .custom-table thead th {
-    background-color: #f8f9fa;
-    color: #495057;
-    font-weight: bold;
-    text-align: center;
+	background-color: #f8f9fa;
+	color: #495057;
+	font-weight: bold;
+	text-align: center;
 }
 
 .custom-table tbody tr {
-    transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
 }
 
 .custom-table tbody tr:hover {
-    background-color: #e9ecef;
+	background-color: #e9ecef;
 }
 
 .custom-table td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 0.75rem;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0.75rem;
 }
 
 .profile-form {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .profile-form .form-group {
-    margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 .profile-form .form-group label {
-    font-weight: 500;
+	font-weight: 500;
 }
 
 .profile-form .form-control {
-    border-radius: 0.25rem;
-    box-shadow: none;
+	border-radius: 0.25rem;
+	box-shadow: none;
 }
 
 .profile-form .btn-primary {
-    margin-top: 20px;
-    width: 100%;
+	margin-top: 20px;
+	width: 100%;
 }
