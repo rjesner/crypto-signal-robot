@@ -1,4 +1,4 @@
-from app.api.dbSetupSingleton import dbSetupSingleton
+from app.dbSetupSingleton import dbSetupSingleton
 
 engine = dbSetupSingleton.getEngine()
 Base = dbSetupSingleton.getBase()

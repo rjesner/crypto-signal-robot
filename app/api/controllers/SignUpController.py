@@ -1,4 +1,4 @@
-from app.api.dbSetup import SessionLocal
+from app.dbSetup import SessionLocal
 from app.api.models.SignUpModel import SignUpModel
 from app.api.models.UserModel import User
 

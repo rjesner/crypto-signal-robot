@@ -1,5 +1,4 @@
 class RobotController:
     @staticmethod
-    def get_signal_backup():
+    def get_signal():
         return {'message': "Mensagem de teste"}, 200
-
