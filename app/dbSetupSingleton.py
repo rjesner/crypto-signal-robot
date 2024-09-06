@@ -14,8 +14,12 @@ class dbSetupSingleton:
 			DATABASE_URL = "mariadb+mariadbconnector://root:pass123@192.168.99.101:3306/tradingbot"
 			cls.__engine = create_engine(DATABASE_URL)
 
-			sql_file_path = 'app/dbSetup.sql'
-			with open(sql_file_path, 'r') as file:
+			with open('app/sql/Users.sql', 'r') as file:
+				create_table_sql = file.read()
+			with cls.__engine.connect() as connection:
+				connection.execute(text(create_table_sql))
+
+			with open('app/sql/BTCHistory.sql', 'r') as file:
 				create_table_sql = file.read()
 			with cls.__engine.connect() as connection:
 				connection.execute(text(create_table_sql))
