@@ -8,6 +8,7 @@ import Access from './components/AccessComponent';
 import Pricing from './components/PricingComponent';
 import Profile from './components/ProfileComponent';
 import Chat from './components/ChatComponent';
+import Buy from './components/BuyComponent';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BoxWrapper from './components/helper/BoxWrapper';
@@ -47,6 +48,7 @@ function App() {
 							<Route path="/pricing" element={<Pricing />} />
 							<Route path="/profile" element={<Profile />} />
 							<Route path="/chat" element={<Chat />} />
+							<Route path="/buy" element={<Buy />} />
 						</Routes>
 					</BoxWrapper>
 				</div>
