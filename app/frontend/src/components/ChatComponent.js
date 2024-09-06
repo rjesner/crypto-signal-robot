@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './template/ChatComponent.css';
 import robotImage from '../assets/images/robot.png';
+import {toast} from "react-toastify";
 
 
 const ChatComponent = () => {
@@ -9,19 +10,38 @@ const ChatComponent = () => {
 
 	const msgHistoryRef = useRef(null);
 
-	const sendMessage = () => {
-		const newMessage = 'Hello World!';
-		const currentTime = new Date().toLocaleTimeString();
+	const sendMessage = (message) => {
+    const currentTime = new Date().toLocaleTimeString();
 		setMessages((prevMessages) => [
 			...prevMessages,
-			{ text: newMessage, type: 'outgoing', timestamp: currentTime }
+			{ text: message, type: 'outgoing', timestamp: currentTime }
 		]);
 	};
 
 	useEffect(() => {
-		const id = setInterval(() => {
-			sendMessage();
-		}, 1000);
+		sendMessage('Sou o robô de sinais. Informarei por este canal dicas de compra de criptomoedas.');
+
+		const id = setInterval(async () => {
+			try {
+				const response = await fetch('http://localhost:80/api/robot', {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+
+				const data = await response.json();
+
+				if (response.ok) {
+					console.log('Sugestão de compra recebida');
+					sendMessage(data.message)
+				} else {
+					console.log(`Server error: ${data.message || response.statusText}`);
+				}
+			} catch (error) {
+				console.log(`Network error: ${error.message}`);
+			}
+		}, 3000);
 
 		setIntervalId(id);
 

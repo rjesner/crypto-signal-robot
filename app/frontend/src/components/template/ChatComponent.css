@@ -150,8 +150,9 @@ img {
 }
 
 .sent_msg {
-	float: right;
-	width: 46%;
+    float: right;
+    width: auto;
+    max-width: 80%;
 }
 
 .sent_msg p {

@@ -8,6 +8,7 @@ from app.api.controllers.LoginController import LoginController
 from app.api.controllers.SignUpController import SignUpController
 from app.api.controllers.AccessController import AccessController
 from app.api.controllers.ProfileController import ProfileController
+from app.api.controllers.RobotController import RobotController
 
 
 def login_api():
@@ -64,7 +65,7 @@ def access_api():
             return jsonify(response), status_code
 
         except Exception as e:
-            print(f"Error processing login request: {str(e)}", file=sys.stderr)
+            print(f"Error processing access request: {str(e)}", file=sys.stderr)
             return jsonify({'message': 'Internal server error'}), 500
 
     return jsonify({'message': 'Invalid request method'}), 405
@@ -89,6 +90,20 @@ def profile_api():
 
         except Exception as e:
             print(f"Error processing profile request: {str(e)}", file=sys.stderr)
+            return jsonify({'message': 'Internal server error'}), 500
+
+    return jsonify({'message': 'Invalid request method'}), 405
+
+
+def robot_api():
+    if request.method == 'GET':
+        try:
+            response, status_code = RobotController.get_signal()
+
+            return jsonify(response), status_code
+
+        except Exception as e:
+            print(f"Error processing robot request: {str(e)}", file=sys.stderr)
             return jsonify({'message': 'Internal server error'}), 500
 
     return jsonify({'message': 'Invalid request method'}), 405
