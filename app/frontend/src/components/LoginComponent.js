@@ -72,9 +72,6 @@ export default function Login() {
 					Carregar
 				</button>
 			</div>
-			<p className="forgot-password text-right">
-				<a href="#">Esqueceu a senha?</a>
-			</p>
 		</form>
 	);
 }

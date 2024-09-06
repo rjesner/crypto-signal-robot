@@ -79,7 +79,7 @@ export default function SignUp() {
 				</button>
 			</div>
 			<p className="forgot-password text-right">
-				Já registrado, <a href="/login">fazer login</a>?
+				Já registrado, <a onClick={() => navigate('/login')}><u>fazer login</u></a>?
 			</p>
 		</form>
 	);
