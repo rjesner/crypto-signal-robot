@@ -1,3 +1,6 @@
+from decimal import Decimal, InvalidOperation
+
+
 class CryptoService:
 	@staticmethod
 	def crypto_info_filter(soup):
@@ -14,3 +17,13 @@ class CryptoService:
 		if dollar_index != -1:
 			return input_data[dollar_index:]
 		return ""
+
+	@staticmethod
+	def parse_currency(currency_str):
+		# Remove currency symbol and commas
+		clean_str = currency_str.replace('$', '').replace(',', '')
+		try:
+			# Convert the cleaned string to Decimal
+			return Decimal(clean_str)
+		except InvalidOperation:
+			raise ValueError(f"Invalid currency format: {currency_str}")

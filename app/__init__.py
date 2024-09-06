@@ -16,7 +16,7 @@ app.register_blueprint(api_blueprint, url_prefix='/api')
 def run_db_setup():
 	setup_btc_history()
 	# Schedule the next run in 24 hours
-	threading.Timer(10, run_db_setup).start()  # 86400 seconds = 24 hours
+	threading.Timer(86400, run_db_setup).start()  # 86400 seconds = 24 hours
 
 
 # Start the initial setup

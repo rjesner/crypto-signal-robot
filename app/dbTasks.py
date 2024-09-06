@@ -17,7 +17,7 @@ def setup_btc_history():
 		btc_price_element = btc_info_element.get("price")
 
 		now = datetime.now()
-		formatted_date = now.strftime("%m/%d/%Y")
+		formatted_date = now.strftime("%Y-%m-%d")
 
 		new_data = BTCHistory(
 			btc_value=btc_price_element,
