@@ -10,6 +10,12 @@ class User(Base):
     lastname = Column(String(50))
     email = Column(String(100))
     password = Column(String(100))
+    cpf = Column(String(100))
+    address = Column(String(100))
+    telephone = Column(String(100))
 
     def __repr__(self):
-        return f"<User(id={self.id}, firstname={self.firstname}, lastname={self.lastname}, email={self.email})>"
+        return (f"<User(id={self.id}, firstname={self.firstname}, "
+                f"lastname={self.lastname}, email={self.email}, "
+                f"cpf={self.cpf}, address={self.address}, "
+                f"telephone={self.telephone})>")

@@ -30,7 +30,10 @@ class SignUpController:
 			firstname=sign_up_model.first_name,
 			lastname=sign_up_model.last_name,
 			email=sign_up_model.email,
-			password=hashed_password
+			password=hashed_password,
+			cpf='---',
+			address='---',
+			telephone='---'
 		)
 		session.add(new_user)
 		session.commit()

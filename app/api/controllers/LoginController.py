@@ -21,6 +21,7 @@ class LoginController:
         hashed_password = sha256_hash.hexdigest()
 
         user = session.query(User).filter_by(email=login_model.email).first()
+        session.close()
 
         if user is None:
             return {'message': 'User not found'}, 400
