@@ -9,10 +9,12 @@ main = Blueprint('main', __name__,
 
 
 @main.route('/login')
-@main.route('/signup')
-@main.route('/access')
-@main.route('/profile')
-@main.route('/robot')
+@main.route("/signup")
+@main.route("/access")
+@main.route("/pricing")
+@main.route("/profile")
+@main.route("/chat")
+@main.route("/buy")
 def redirect_to_root():
     return redirect(url_for('main.index'), code=301)  # Permanent redirect
 

@@ -30,7 +30,7 @@ function App() {
 									</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="nav-link" to={'/sign-up'}>
+									<Link className="nav-link" to={'/signup'}>
 										Cadastro
 									</Link>
 								</li>
@@ -43,7 +43,7 @@ function App() {
 						<Routes>
 							<Route path="/" element={<Login />} />
 							<Route path="/login" element={<Login />} />
-							<Route path="/sign-up" element={<SignUp />} />
+							<Route path="/signup" element={<SignUp />} />
 							<Route path="/access" element={<Access />} />
 							<Route path="/pricing" element={<Pricing />} />
 							<Route path="/profile" element={<Profile />} />
