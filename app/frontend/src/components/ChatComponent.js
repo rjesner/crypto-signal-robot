@@ -41,7 +41,7 @@ const ChatComponent = () => {
 			} catch (error) {
 				console.log(`Network error: ${error.message}`);
 			}
-		}, 30000);
+		}, 20000);
 
 		setIntervalId(id);
 

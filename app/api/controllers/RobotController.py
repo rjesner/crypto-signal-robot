@@ -21,10 +21,16 @@ class RobotController:
         oldest_data = oldest_entry.btc_date if oldest_entry else None
         newest_value = newest_entry.btc_value if newest_entry else None
 
-        if CryptoService.parse_currency(oldest_value) > CryptoService.parse_currency(newest_value):
-            message = f"BTC is cheap today compared to {oldest_data}"
-            return {'message': message}, 200
+        formatted_date_str = oldest_data.strftime("%d/%m/%y")
 
-        return {'message': 'No important data'}, 400
+        if oldest_value is None or newest_value is None:
+            return {'message': 'No important data'}, 400
+        if CryptoService.parse_currency(oldest_value) > CryptoService.parse_currency(newest_value):
+            message = f"Compra: BTC está melhor hoje comparado ao dia {formatted_date_str}"
+            return {'message': message}, 200
+        message = f"Venda: BTC está melhor hoje comparado ao dia {formatted_date_str}"
+        return {'message': message}, 200
+
+
 
 
