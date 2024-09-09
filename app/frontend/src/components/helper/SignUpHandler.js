@@ -1,8 +1,9 @@
 import { toast } from 'react-toastify';
+import { getAPI } from "./GetAPI";
 
 export async function handleSignUpClick({ firstName, lastName, email, password }, navigate) {
 	try {
-		const response = await fetch('http://localhost:80/api/signup', {
+		const response = await fetch(getAPI() + '/api/signup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

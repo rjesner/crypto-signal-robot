@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './template/ChatComponent.css';
 import robotImage from '../assets/images/robot.png';
-import {toast} from "react-toastify";
+import { getAPI } from "./helper/GetAPI";
 
 
 const ChatComponent = () => {
@@ -23,7 +23,7 @@ const ChatComponent = () => {
 
 		const id = setInterval(async () => {
 			try {
-				const response = await fetch('http://localhost:80/api/robot', {
+				const response = await fetch(getAPI() + '/api/robot', {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',

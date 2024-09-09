@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
+import { getAPI } from "./GetAPI";
 
 export async function handleProfileClick({ email, password, cpf, address, telephone }, navigate) {
 	try {
-		const response = await fetch('http://localhost:80/api/profile', {
+		const response = await fetch(getAPI() + '/api/profile', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

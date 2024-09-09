@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Audio } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { getAPI } from "./helper/GetAPI";
 
 const AccessComponent = () => {
 	const [data, setData] = useState([
@@ -14,7 +15,7 @@ const AccessComponent = () => {
 
 	const updateTableData = async () => {
 		try {
-			const response = await fetch('http://localhost:80/api/access', {
+			const response = await fetch(getAPI() + '/api/access', {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
