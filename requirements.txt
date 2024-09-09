@@ -1,0 +1,6 @@
+beautifulsoup4==4.12.3
+Flask==3.0.2
+Flask-Cors==4.0.1
+mariadb==1.1.10
+SQLAlchemy==2.0.32
+setuptools==72.1.0
