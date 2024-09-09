@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export async function handleLoginClick({ email, password, rememberMe }, navigate) {
+export async function handleLoginClick({ email, password }, navigate) {
 	try {
 		const response = await fetch('http://localhost:80/api/login', {
 			method: 'POST',
@@ -10,7 +10,6 @@ export async function handleLoginClick({ email, password, rememberMe }, navigate
 			body: JSON.stringify({
 				email,
 				password,
-				rememberMe,
 			}),
 		});
 

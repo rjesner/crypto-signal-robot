@@ -17,9 +17,8 @@ def login_api():
             data = request.get_json()
             email = data.get('email')
             password = data.get('password')
-            remember_me = data.get('rememberMe')
 
-            print(f"Received login data: Email: {email}, Password: {password}, Remember Me: {remember_me}", file=sys.stderr)
+            print(f"Received login data: Email: {email}", file=sys.stderr)
 
             login_model = LoginModel(email=email, password=password)
             response, status_code = LoginController.login(login_model)
@@ -81,7 +80,7 @@ def profile_api():
             address = data.get('address')
             telephone = data.get('telephone')
 
-            print(f"Received profile data: Email: {email}, Password: {password}, CPF: {cpf}, Address: {address}, Telephone: {telephone}", file=sys.stderr)
+            print(f"Received profile data: Email: {email}, CPF: {cpf}, Address: {address}, Telephone: {telephone}", file=sys.stderr)
 
             profile_model = ProfileModel(email=email, password=password, cpf=cpf, address=address, telephone=telephone)
             response, status_code = ProfileController.update_profile(profile_model)

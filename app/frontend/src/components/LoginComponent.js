@@ -21,8 +21,8 @@ export default function Login() {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const { email, password, rememberMe } = formState;
-		await handleLoginClick({ email, password, rememberMe }, navigate);
+		const { email, password} = formState;
+		await handleLoginClick({ email, password }, navigate);
 	};
 
 	const { email, password, rememberMe } = formState;
@@ -51,21 +51,6 @@ export default function Login() {
 					onChange={handleChange}
 					placeholder="Insira a senha"
 				/>
-			</div>
-			<div className="mb-3">
-				<div className="custom-control custom-checkbox">
-					<input
-						type="checkbox"
-						className="custom-control-input"
-						id="customCheck1"
-						name="rememberMe"
-						checked={rememberMe}
-						onChange={handleChange}
-					/>
-					<label className="custom-control-label" htmlFor="customCheck1">
-						Lembrar-me
-					</label>
-				</div>
 			</div>
 			<div className="d-grid">
 				<button type="submit" className="btn btn-primary">
