@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleProfileClick } from './helper/ProfileHandler';
+import {useAuth} from "../AuthContext";
+import useFetchRobotSuggestion from "./helper/FetchRobotSuggestion";
 
 const ProfileComponent = () => {
+    const { email } = useAuth();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -25,6 +28,8 @@ const ProfileComponent = () => {
         e.preventDefault();
         handleProfileClick(formData, navigate);
     };
+
+    useFetchRobotSuggestion(email);
 
     return (
         <div className="auth-wrapper">

@@ -5,10 +5,15 @@ import paypalImage from '../assets/images/paypal.png';
 import mastercardImage from '../assets/images/mastercard.png';
 import visaImage from '../assets/images/visa.png';
 import stripeImage from '../assets/images/stripe.png';
+import {useAuth} from "../AuthContext";
+import useFetchRobotSuggestion from "./helper/FetchRobotSuggestion";
 
 const BuyComponent = () => {
+    const { email } = useAuth();
     const location = useLocation();
     const price = location.state?.price || 'R$0';
+
+    useFetchRobotSuggestion(email);
 
     return (
         <div className="container-card d-flex justify-content-center mt-5 mb-5">

@@ -1,12 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import {useAuth} from "../AuthContext";
+import useFetchRobotSuggestion from "./helper/FetchRobotSuggestion";
 
 const PricingComponent = () => {
+    const { email } = useAuth();
     const navigate = useNavigate();
 
     const handleBuy = (price) => {
         navigate('/buy', { state: { price } });
     };
+
+    useFetchRobotSuggestion(email);
 
     return (
         <div>
