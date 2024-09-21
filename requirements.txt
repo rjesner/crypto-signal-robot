@@ -4,3 +4,4 @@ Flask-Cors==4.0.1
 mariadb==1.1.10
 SQLAlchemy==2.0.32
 setuptools==72.1.0
+bcrypt==4.2.0

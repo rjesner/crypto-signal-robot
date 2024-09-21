@@ -2,7 +2,7 @@ from app.dbSetup import SessionLocal
 from app.api.models.LoginModel import LoginModel
 from app.api.models.UserModel import User
 
-import hashlib
+import bcrypt
 
 
 class LoginController:
@@ -15,18 +15,15 @@ class LoginController:
             return {'message': 'Password must be at least 6 characters long'}, 400
 
         session = SessionLocal()
-
-        sha256_hash = hashlib.sha256()
-        sha256_hash.update(login_model.password.encode('utf-8'))
-        hashed_password = sha256_hash.hexdigest()
-
         user = session.query(User).filter_by(email=login_model.email).first()
-        session.close()
 
         if user is None:
+            session.close()
             return {'message': 'User not found'}, 400
 
-        if user.password != hashed_password:
+        if not bcrypt.checkpw(login_model.password.encode('utf-8'), user.password.encode('utf-8')):
+            session.close()
             return {'message': 'Passwords do not match'}, 400
 
+        session.close()
         return {'message': 'Login successful'}, 200
