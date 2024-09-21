@@ -13,7 +13,7 @@ class ChatController:
 		try:
 			user = session.query(User).filter_by(email=email).first()
 			if user is None:
-				return {'message': 'User not found'}, 404
+				return {'message': 'Usuário não encontrado'}, 404
 			
 			# Fetch all messages for the user
 			user_messages = session.query(Message).filter_by(user_id=user.id).all()

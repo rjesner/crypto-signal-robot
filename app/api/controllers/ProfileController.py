@@ -9,16 +9,16 @@ class ProfileController:
     @staticmethod
     def update_profile(profile_model: ProfileModel):
         if not ProfileModel.is_valid_cpf(profile_model.email):
-            return {'message': 'Invalid CPF format'}, 400
+            return {'message': 'Formato de CPF inválido'}, 400
         
         if not ProfileModel.is_valid_telephone(profile_model.password):
-            return {'message': 'Invalid telephone format'}, 400
+            return {'message': 'Formato de telefone inválido'}, 400
         
         if not ProfileModel.is_valid_email(profile_model.email):
-            return {'message': 'Invalid email format'}, 400
+            return {'message': 'Formato de email inválido'}, 400
         
         if not ProfileModel.is_valid_password(profile_model.password):
-            return {'message': 'Password must be at least 6 characters long'}, 400
+            return {'message': 'A senha deve ter no mínimo 6 caracteres'}, 400
         
         session = SessionLocal()
         
@@ -30,11 +30,11 @@ class ProfileController:
         
         if user is None:
             session.close()
-            return {'message': 'User not found'}, 400
+            return {'message': 'Usuário não encontrado'}, 400
         
         if user.password != hashed_password:
             session.close()
-            return {'message': 'Passwords do not match'}, 400
+            return {'message': 'A senha deve ter no mínimo 6 caracteres'}, 400
         
         user.cpf = profile_model.cpf
         user.address = profile_model.address
@@ -43,4 +43,4 @@ class ProfileController:
         session.commit()
         session.close()
         
-        return {'message': 'Update successful'}, 200
+        return {'message': 'Atualização com sucesso'}, 200

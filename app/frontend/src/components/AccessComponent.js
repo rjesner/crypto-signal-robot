@@ -77,7 +77,7 @@ const AccessComponent = () => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-9">
-                    <h2 className="mb-4">Crypto Market Data</h2>
+                    <h2 className="mb-4">Informações do Mercado de Criptoativos</h2>
                     {loading ? (
                         <div className="d-flex justify-content-center">
                             <Audio
@@ -94,9 +94,9 @@ const AccessComponent = () => {
                                 <thead className="thead-light">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Market Cap</th>
-                                        <th>Price</th>
+                                        <th>Nome</th>
+                                        <th>Capitalização</th>
+                                        <th>Preço</th>
                                     </tr>
                                 </thead>
                                 <tbody>

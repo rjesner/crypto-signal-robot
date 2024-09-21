@@ -15,9 +15,9 @@ class AccessController:
             btc_market_cap_element = btc_info_element.get("market_cap")
             btc_price_element = btc_info_element.get("price")
             if not btc_market_cap_element or not btc_price_element:
-                return {'message': 'Information not found'}, 400
+                return {'message': 'Informação não encontrada'}, 400
         else:
-            return {'message': 'The page is empty or could not be retrieved'}, 400
+            return {'message': 'A página está vazia ou não pode ser obtida'}, 400
 
         url = "https://coinmarketcap.com/currencies/ethereum/"
         page = requests.get(url)
@@ -28,9 +28,9 @@ class AccessController:
             eth_market_cap_element = eth_info_element.get("market_cap")
             eth_price_element = eth_info_element.get("price")
             if not eth_market_cap_element or not eth_price_element:
-                return {'message': 'Information not found'}, 400
+                return {'message': 'Informação não encontrada'}, 400
         else:
-            return {'message': 'The page is empty or could not be retrieved'}, 400
+            return {'message': 'A página está vazia ou não pode ser obtida'}, 400
 
         url = "https://coinmarketcap.com/currencies/solana/"
         page = requests.get(url)
@@ -41,9 +41,9 @@ class AccessController:
             sol_market_cap_element = sol_info_element.get("market_cap")
             sol_price_element = sol_info_element.get("price")
             if not sol_market_cap_element or not sol_price_element:
-                return {'message': 'Information not found'}, 400
+                return {'message': 'Informação não encontrada'}, 400
         else:
-            return {'message': 'The page is empty or could not be retrieved'}, 400
+            return {'message': 'A página está vazia ou não pode ser obtida'}, 400
 
         response_string = btc_market_cap_element + "|" + btc_price_element + "|"
         response_string += eth_market_cap_element + "|" + eth_price_element + "|"

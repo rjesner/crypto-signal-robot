@@ -26,4 +26,4 @@ class CryptoService:
 			# Convert the cleaned string to Decimal
 			return Decimal(clean_str)
 		except InvalidOperation:
-			raise ValueError(f"Invalid currency format: {currency_str}")
+			raise ValueError(f"Formato de valor inválido: {currency_str}")

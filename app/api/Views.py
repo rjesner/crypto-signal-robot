@@ -28,9 +28,9 @@ def login_api():
         
         except Exception as e:
             print(f"Error processing login request: {str(e)}", file=sys.stderr)
-            return jsonify({'message': 'Internal server error'}), 500
+            return jsonify({'message': 'Erro interno no servidor'}), 500
     
-    return jsonify({'message': 'Invalid request method'}), 405
+    return jsonify({'message': 'Método de requisição inválido'}), 405
 
 
 def signup_api():
@@ -52,9 +52,9 @@ def signup_api():
         
         except Exception as e:
             print(f"Error processing sign-up request: {str(e)}", file=sys.stderr)
-            return jsonify({'message': 'Internal server error'}), 500
+            return jsonify({'message': 'Erro interno no servidor'}), 500
     
-    return jsonify({'message': 'Invalid request method'}), 405
+    return jsonify({'message': 'Método de requisição inválido'}), 405
 
 
 def access_api():
@@ -66,9 +66,9 @@ def access_api():
         
         except Exception as e:
             print(f"Error processing access request: {str(e)}", file=sys.stderr)
-            return jsonify({'message': 'Internal server error'}), 500
+            return jsonify({'message': 'Erro interno no servidor'}), 500
     
-    return jsonify({'message': 'Invalid request method'}), 405
+    return jsonify({'message': 'Método de requisição inválido'}), 405
 
 
 def profile_api():
@@ -90,9 +90,9 @@ def profile_api():
         
         except Exception as e:
             print(f"Error processing profile request: {str(e)}", file=sys.stderr)
-            return jsonify({'message': 'Internal server error'}), 500
+            return jsonify({'message': 'Erro interno no servidor'}), 500
     
-    return jsonify({'message': 'Invalid request method'}), 405
+    return jsonify({'message': 'Método de requisição inválido'}), 405
 
 
 def robot_api():
@@ -109,9 +109,9 @@ def robot_api():
         
         except Exception as e:
             print(f"Error processing robot request: {str(e)}", file=sys.stderr)
-            return jsonify({'message': 'Internal server error'}), 500
+            return jsonify({'message': 'Erro interno no servidor'}), 500
     
-    return jsonify({'message': 'Invalid request method'}), 405
+    return jsonify({'message': 'Método de requisição inválido'}), 405
 
 
 def chat_api():
@@ -128,6 +128,6 @@ def chat_api():
         
         except Exception as e:
             print(f"Error processing robot request: {str(e)}", file=sys.stderr)
-            return jsonify({'message': 'Internal server error'}), 500
+            return jsonify({'message': 'Erro interno no servidor'}), 500
     
-    return jsonify({'message': 'Invalid request method'}), 405
+    return jsonify({'message': 'Método de requisição inválido'}), 405

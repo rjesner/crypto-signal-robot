@@ -9,21 +9,21 @@ class LoginController:
     @staticmethod
     def login(login_model: LoginModel):
         if not LoginModel.is_valid_email(login_model.email):
-            return {'message': 'Invalid email format'}, 400
+            return {'message': 'Formato de email inválido'}, 400
 
         if not LoginModel.is_valid_password(login_model.password):
-            return {'message': 'Password must be at least 6 characters long'}, 400
+            return {'message': 'A senha deve ter no mínimo 6 caracteres'}, 400
 
         session = SessionLocal()
         user = session.query(User).filter_by(email=login_model.email).first()
 
         if user is None:
             session.close()
-            return {'message': 'User not found'}, 400
+            return {'message': 'Usuário não encontrado'}, 400
 
         if not bcrypt.checkpw(login_model.password.encode('utf-8'), user.password.encode('utf-8')):
             session.close()
-            return {'message': 'Passwords do not match'}, 400
+            return {'message': 'Senha incorreta'}, 400
 
         session.close()
-        return {'message': 'Login successful'}, 200
+        return {'message': 'Login com sucesso'}, 200
