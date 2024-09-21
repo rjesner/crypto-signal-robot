@@ -4,28 +4,56 @@ import robotImage from '../assets/images/robot.png';
 import { getAPI } from "./helper/GetAPI";
 import { useAuth } from '../AuthContext';
 
-
 const ChatComponent = () => {
 	const { email } = useAuth();
 	const [messages, setMessages] = useState([]);
+	const msgHistoryRef = useRef(null);
 	const [intervalId, setIntervalId] = useState(null);
 
-	const msgHistoryRef = useRef(null);
-
-	const sendMessage = (message) => {
-    const currentTime = new Date().toLocaleTimeString();
+	const sendMessage = (message, timestamp) => {
 		setMessages((prevMessages) => [
 			...prevMessages,
-			{ text: message, type: 'outgoing', timestamp: currentTime }
+			{ text: message, type: 'outgoing', timestamp }
 		]);
 	};
 
-	useEffect(() => {
-        sendMessage('Sou o robô de sinais. Informarei por este canal dicas de compra de criptomoedas.');
+	const fetchChatHistory = () => {
+		const xhr = new XMLHttpRequest();
+		xhr.open('GET', getAPI() + '/api/chat', false);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('Authorization', `${email}`);
 
-        const id = setInterval(async () => {
-            try {
-                const response = await fetch(getAPI() + '/api/robot', {
+		try {
+			xhr.send();
+
+			if (xhr.status >= 200 && xhr.status < 300) {
+				const data = JSON.parse(xhr.responseText);
+				console.log('Histórico de sugestões recebido');
+				console.log(data.message);
+				const messagesArray = data.message.split('|');
+				for (let i = 0; i < messagesArray.length; i += 2) {
+					const message = messagesArray[i];
+					const timestamp = messagesArray[i + 1];
+					sendMessage(message, timestamp);
+				}
+			} else {
+				console.log(`Server error: ${xhr.statusText}`);
+			}
+		} catch (error) {
+			console.log(`Network error: ${error.message}`);
+		}
+	};
+
+	useEffect(() => {
+		fetchChatHistory();
+
+		const initialMessage = 'Sou o robô de sinais. Informarei por este canal dicas de compra de criptomoedas.';
+		const currentDate = new Date().toLocaleDateString();
+		sendMessage(initialMessage, currentDate);
+
+		const id = setInterval(async () => {
+			try {
+				const response = await fetch(getAPI() + '/api/robot', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -33,23 +61,23 @@ const ChatComponent = () => {
                     },
                 });
 
-                const data = await response.json();
+				const data = await response.json();
 
-                if (response.ok) {
-                    console.log('Sugestão de compra recebida');
-                    sendMessage(data.message);
-                } else {
-                    console.log(`Server error: ${data.message || response.statusText}`);
-                }
-            } catch (error) {
-                console.log(`Network error: ${error.message}`);
-            }
-        }, 2000);
+				if (response.ok) {
+					console.log('Sugestão de compra recebida');
+					sendMessage(data.message, currentDate);
+				} else {
+					console.log(`Server error: ${data.message || response.statusText}`);
+				}
+			} catch (error) {
+				console.log(`Network error: ${error.message}`);
+			}
+		}, 10000);
 
-        setIntervalId(id);
+		setIntervalId(id);
 
-        return () => clearInterval(id);
-    }, [email]);
+		return () => clearInterval(id);
+	}, [email]);
 
 	useEffect(() => {
 		if (msgHistoryRef.current) {

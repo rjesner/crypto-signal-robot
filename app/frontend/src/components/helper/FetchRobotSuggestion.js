@@ -27,7 +27,7 @@ const useFetchRobotSuggestion = (email) => {
             }
         };
 
-        const id = setInterval(fetchSuggestions, 2000);
+        const id = setInterval(fetchSuggestions, 10000);
         return () => clearInterval(id);
     }, [email]);
 };

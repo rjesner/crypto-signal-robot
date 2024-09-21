@@ -9,6 +9,7 @@ from app.api.controllers.SignUpController import SignUpController
 from app.api.controllers.AccessController import AccessController
 from app.api.controllers.ProfileController import ProfileController
 from app.api.controllers.RobotController import RobotController
+from app.api.controllers.ChatController import ChatController
 
 
 def login_api():
@@ -104,6 +105,25 @@ def robot_api():
         
         try:
             response, status_code = RobotController.get_signal(auth_header)
+            return jsonify(response), status_code
+        
+        except Exception as e:
+            print(f"Error processing robot request: {str(e)}", file=sys.stderr)
+            return jsonify({'message': 'Internal server error'}), 500
+    
+    return jsonify({'message': 'Invalid request method'}), 405
+
+
+def chat_api():
+    if request.method == 'GET':
+        auth_header = request.headers.get('Authorization')
+        if auth_header:
+            print(f"Authorization header: {auth_header}", file=sys.stderr)
+        else:
+            print("No Authorization header provided", file=sys.stderr)
+        
+        try:
+            response, status_code = ChatController.get_signal(auth_header)
             return jsonify(response), status_code
         
         except Exception as e:
