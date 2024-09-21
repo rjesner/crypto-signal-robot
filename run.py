@@ -32,11 +32,11 @@ if not os.path.exists(static_folder):
         exit()
     copy_files(react_build_folder, static_folder)
     react_build_static_folder: str = react_build_folder + '/static'
-
+    
     css_path: str = react_build_static_folder + '/css'
     js_path: str = react_build_static_folder + '/js'
     media_path: str = react_build_static_folder + '/media'
-
+    
     if os.path.exists(css_path):
         copy_specific_folder(css_path, static_folder)
     if os.path.exists(js_path):

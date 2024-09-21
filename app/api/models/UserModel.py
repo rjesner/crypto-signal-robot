@@ -4,7 +4,7 @@ from app.dbSetup import Base
 
 class User(Base):
     __tablename__ = 'users'
-
+    
     id = Column(Integer, primary_key=True, autoincrement=True)
     firstname = Column(String(50))
     lastname = Column(String(50))
@@ -13,7 +13,7 @@ class User(Base):
     cpf = Column(String(100))
     address = Column(String(100))
     telephone = Column(String(100))
-
+    
     def __repr__(self):
         return (f"<User(id={self.id}, firstname={self.firstname}, "
                 f"lastname={self.lastname}, email={self.email}, "
