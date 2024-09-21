@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from '../AuthContext';
 import { useNavigate } from "react-router-dom";
 import { handleLoginClick } from "./helper/LoginHandler";
 
@@ -9,6 +10,7 @@ export default function Login() {
 		rememberMe: false,
 	});
 
+	const { setEmail } = useAuth();
 	const navigate = useNavigate();
 
 	const handleChange = (event) => {
@@ -22,7 +24,7 @@ export default function Login() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const { email, password} = formState;
-		await handleLoginClick({ email, password }, navigate);
+		await handleLoginClick({ email, password }, navigate, setEmail);
 	};
 
 	const { email, password, rememberMe } = formState;

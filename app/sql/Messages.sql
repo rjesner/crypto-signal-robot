@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    message TEXT,
+    created_at DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

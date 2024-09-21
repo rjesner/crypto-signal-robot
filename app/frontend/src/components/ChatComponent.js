@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import './template/ChatComponent.css';
 import robotImage from '../assets/images/robot.png';
 import { getAPI } from "./helper/GetAPI";
+import { useAuth } from '../AuthContext';
 
 
 const ChatComponent = () => {
+	const { email } = useAuth();
 	const [messages, setMessages] = useState([]);
 	const [intervalId, setIntervalId] = useState(null);
 
@@ -19,34 +21,35 @@ const ChatComponent = () => {
 	};
 
 	useEffect(() => {
-		sendMessage('Sou o robô de sinais. Informarei por este canal dicas de compra de criptomoedas.');
+        sendMessage('Sou o robô de sinais. Informarei por este canal dicas de compra de criptomoedas.');
 
-		const id = setInterval(async () => {
-			try {
-				const response = await fetch(getAPI() + '/api/robot', {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				});
+        const id = setInterval(async () => {
+            try {
+                const response = await fetch(getAPI() + '/api/robot', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `${email}`,
+                    },
+                });
 
-				const data = await response.json();
+                const data = await response.json();
 
-				if (response.ok) {
-					console.log('Sugestão de compra recebida');
-					sendMessage(data.message)
-				} else {
-					console.log(`Server error: ${data.message || response.statusText}`);
-				}
-			} catch (error) {
-				console.log(`Network error: ${error.message}`);
-			}
-		}, 20000);
+                if (response.ok) {
+                    console.log('Sugestão de compra recebida');
+                    sendMessage(data.message);
+                } else {
+                    console.log(`Server error: ${data.message || response.statusText}`);
+                }
+            } catch (error) {
+                console.log(`Network error: ${error.message}`);
+            }
+        }, 2000);
 
-		setIntervalId(id);
+        setIntervalId(id);
 
-		return () => clearInterval(id);
-	}, []);
+        return () => clearInterval(id);
+    }, [email]);
 
 	useEffect(() => {
 		if (msgHistoryRef.current) {

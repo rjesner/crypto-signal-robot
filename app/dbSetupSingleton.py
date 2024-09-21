@@ -23,6 +23,11 @@ class dbSetupSingleton:
 				create_table_sql = file.read()
 			with cls.__engine.connect() as connection:
 				connection.execute(text(create_table_sql))
+			
+			with open('app/sql/Messages.sql', 'r') as file:
+				create_table_sql = file.read()
+			with cls.__engine.connect() as connection:
+				connection.execute(text(create_table_sql))
 		return cls.__engine
 
 	@classmethod
