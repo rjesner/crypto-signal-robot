@@ -29,6 +29,7 @@ class SignUpController:
             lastname=sign_up_model.last_name,
             email=sign_up_model.email,
             password=hashed_password.decode('utf-8'),
+            recovery='---',
             cpf='---',
             address='---',
             telephone='---'

@@ -1,25 +1,23 @@
 import { toast } from "react-toastify";
 import { getAPI } from "./GetAPI";
 
-export const handleLoginClick = async ({ email, password }, navigate, setEmail) => {
+export const handleForgotPasswordClick = async ({ email }, navigate) => {
     try {
-        const response = await fetch(getAPI() + '/api/login', {
+        const response = await fetch(getAPI() + '/api/recovery', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 email,
-                password,
             }),
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            toast.success('Login com sucesso');
-            setEmail(email);
-            navigate('/access');
+            toast.success('Recuperação com sucesso');
+            navigate('/login');
         } else {
             toast.error(`Server error: ${data.message || response.statusText}`);
         }

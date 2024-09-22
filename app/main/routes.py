@@ -15,6 +15,7 @@ main = Blueprint('main', __name__,
 @main.route("/profile")
 @main.route("/chat")
 @main.route("/buy")
+@main.route("/forgot-password")
 def redirect_to_root():
     return redirect(url_for('main.index'), code=301)  # Permanent redirect
 

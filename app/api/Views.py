@@ -10,6 +10,7 @@ from app.api.controllers.AccessController import AccessController
 from app.api.controllers.ProfileController import ProfileController
 from app.api.controllers.RobotController import RobotController
 from app.api.controllers.ChatController import ChatController
+from app.api.controllers.RecoveryController import RecoveryController
 
 
 def login_api():
@@ -128,6 +129,25 @@ def chat_api():
         
         except Exception as e:
             print(f"Error processing robot request: {str(e)}", file=sys.stderr)
+            return jsonify({'message': 'Erro interno no servidor'}), 500
+    
+    return jsonify({'message': 'Método de requisição inválido'}), 405
+
+
+def recovery_api():
+    if request.method == 'POST':
+        try:
+            data = request.get_json()
+            email = data.get('email')
+            
+            print(f"Received login data: Email: {email}", file=sys.stderr)
+            
+            response, status_code = RecoveryController.recovery(email)
+            
+            return jsonify(response), status_code
+        
+        except Exception as e:
+            print(f"Error processing login request: {str(e)}", file=sys.stderr)
             return jsonify({'message': 'Erro interno no servidor'}), 500
     
     return jsonify({'message': 'Método de requisição inválido'}), 405

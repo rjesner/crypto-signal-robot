@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useAuth } from '../AuthContext';
 import { useNavigate } from "react-router-dom";
 import { handleLoginClick } from "./helper/LoginHandler";
+import { Link } from 'react-router-dom';
 
 export default function Login() {
 	const [formState, setFormState] = useState({
 		email: "",
 		password: "",
-		rememberMe: false,
 	});
 
 	const { setEmail } = useAuth();
@@ -58,6 +58,9 @@ export default function Login() {
 				<button type="submit" className="btn btn-primary">
 					Carregar
 				</button>
+			</div>
+			<div className="forgot-password text-right">
+				<Link to="/forgot-password">Esqueceu a senha?</Link>
 			</div>
 		</form>
 	);

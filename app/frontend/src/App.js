@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BoxWrapper from './components/helper/BoxWrapper';
 import { AuthProvider } from './AuthContext';
+import ForgottenPassword from "./components/ForgotPasswordComponent";
 
 function App() {
     return (
@@ -49,6 +50,7 @@ function App() {
                                 <Route path="/profile" element={<Profile />} />
                                 <Route path="/chat" element={<Chat />} />
                                 <Route path="/buy" element={<Buy />} />
+                                <Route path="/forgot-password" element={<ForgottenPassword />} />
                             </Routes>
                         </BoxWrapper>
                     </div>
