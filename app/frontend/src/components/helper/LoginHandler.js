@@ -21,9 +21,9 @@ export const handleLoginClick = async ({ email, password }, navigate, setEmail) 
             setEmail(email);
             navigate('/access');
         } else {
-            toast.error(`Server error: ${data.message || response.statusText}`);
+            toast.error(`Erro de servidor: ${data.message || response.statusText}`);
         }
     } catch (error) {
-        toast.error(`Network error: ${error.message}`);
+        toast.error(`Erro de rede: ${error.message}`);
     }
 };

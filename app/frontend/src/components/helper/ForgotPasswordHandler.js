@@ -19,9 +19,9 @@ export const handleForgotPasswordClick = async ({ email }, navigate) => {
             toast.success('Recuperação com sucesso');
             navigate('/login');
         } else {
-            toast.error(`Server error: ${data.message || response.statusText}`);
+            toast.error(`Erro de servidor: ${data.message || response.statusText}`);
         }
     } catch (error) {
-        toast.error(`Network error: ${error.message}`);
+        toast.error(`Erro de rede: ${error.message}`);
     }
 };

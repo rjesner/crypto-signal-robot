@@ -37,10 +37,10 @@ const ChatComponent = () => {
 					sendMessage(message, timestamp);
 				}
 			} else {
-				console.log(`Server error: ${xhr.statusText}`);
+				console.log(`Erro de servidor: ${xhr.statusText}`);
 			}
 		} catch (error) {
-			console.log(`Network error: ${error.message}`);
+			console.log(`Erro de rede: ${error.message}`);
 		}
 	};
 
@@ -67,10 +67,10 @@ const ChatComponent = () => {
 					console.log('Sugestão de compra recebida');
 					sendMessage(data.message, currentDate);
 				} else {
-					console.log(`Server error: ${data.message || response.statusText}`);
+					console.log(`Erro de servidor: ${data.message || response.statusText}`);
 				}
 			} catch (error) {
-				console.log(`Network error: ${error.message}`);
+				console.log(`Erro de rede: ${error.message}`);
 			}
 		}, 10000);
 

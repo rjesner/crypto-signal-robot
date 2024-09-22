@@ -62,7 +62,7 @@ const AccessComponent = () => {
 
             setLoading(false);
         } catch (error) {
-            console.log(`Network error: ${error.message}`);
+            console.log(`Erro de rede: ${error.message}`);
             setLoading(false);
         }
     };
