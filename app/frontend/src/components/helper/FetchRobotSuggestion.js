@@ -20,10 +20,10 @@ const useFetchRobotSuggestion = (email) => {
                     console.log('Sugestão de compra recebida');
                     toast.info(data.message);
                 } else {
-                    console.log(`Server error: ${data.message || response.statusText}`);
+                    console.log(`Erro de servidor: ${data.message || response.statusText}`);
                 }
             } catch (error) {
-                console.log(`Network error: ${error.message}`);
+                console.log(`Erro de rede: ${error.message}`);
             }
         };
 

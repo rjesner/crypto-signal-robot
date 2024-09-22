@@ -1,6 +1,6 @@
 # Crypto Signal Robot
 
-Crypto Signal Robot is a project made by student and programmer Rodrigo Jesner as a work for the final project and thesis of the Computer Science program of Universidade Cruzeiro do Sul.
+Crypto Signal Robot is a project made by the developer Rodrigo Jesner as a work for the final project and thesis of the Computer Science program of Universidade Cruzeiro do Sul.
 
 ## Requisites
 
@@ -54,7 +54,7 @@ $> docker run -p 3306:3306 --name mariadb-container -e MYSQL_ROOT_PASSWORD=pass1
 $> docker run -p 7777:80 --name phpmyadmin-container -d --link mariadb-container:db phpmyadmin/phpmyadmin
 ```
 
-Then, create the tradingbot database with the following commands.
+Then, create the 'tradingbot' database with the following commands.
 
 ```bash
 $> docker exec -it mariadb-container bash
