@@ -1,6 +1,6 @@
 # Crypto Signal Robot
 
-Crypto Signal Robot is a project made by the developer Rodrigo Jesner as a work for the final project and thesis of the Computer Science program of Universidade Cruzeiro do Sul.
+Crypto Signal Robot is a project made by the developer Rodrigo Jesner as a work for the final project and thesis of the Computer Science program of Universidade Cruzeiro do Sul. The objective is to create a web MVC application, using Python for the backend and JavaScript for the frontend, to give signals or tips of cryptocurrency trading to the user throught web scrapping and database saved data.
 
 ## Requisites
 
